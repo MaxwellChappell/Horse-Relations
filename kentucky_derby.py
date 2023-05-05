@@ -1,6 +1,6 @@
 from geneology import relation, sort_dict
 
-kentucky_derby = [
+kentucky_horses = [
     "/hit+show3",
     "/verifying",
     "/two+phils",
@@ -23,18 +23,20 @@ kentucky_derby = [
     "/continuar",
 ]
 
-entirety = {}
 
-for horse in kentucky_derby:
-    info = relation(horse)
-    for ancestor in info:
-        if ancestor in entirety:
-            entirety[ancestor] += info[ancestor]
-        else:
-            entirety[ancestor] = info[ancestor]
+def total_ancestors():
+    entirety = {}
 
-entirety = sort_dict(entirety)
+    for horse in kentucky_horses:
+        info = relation(horse)
+        for ancestor in info:
+            if ancestor in entirety:
+                entirety[ancestor] += info[ancestor]
+            else:
+                entirety[ancestor] = info[ancestor]
 
-for horse in entirety:
-    print(horse, entirety[horse]/20)
-    
+    entirety = sort_dict(entirety)
+
+    for horse in entirety:
+        print(horse, entirety[horse]/20)
+        
